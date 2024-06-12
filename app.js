@@ -31,6 +31,20 @@ app.post("/search", (req, res) => {
     )
 })
 
+app.post("/delete", (req, res) => {
+    let input = req.body
+    studentsmodel.findByIdAndDelete(input._id).then(
+        (response) => {
+            console.log("DELETE")
+            res.json({ "status": "success" })
+        }
+    ).catch(
+        (error)=> {
+        res.json({"status": "error"})
+    }
+)
+})
+
 app.listen(8081, () => {
     console.log("server started")
 })
