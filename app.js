@@ -45,6 +45,16 @@ app.post("/delete", (req, res) => {
 )
 })
 
+app.get("/ViewAll", (req, res) => {
+    studentsmodel.find().then(
+        (data) => {
+            res.json(data)
+        }
+    ).catch((error) => {
+        res.json(error)
+    })
+})
+
 app.listen(8081, () => {
     console.log("server started")
 })
